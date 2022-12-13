@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using UserAPI.Application.Interface;
 using UserAPI.Domain;
 
 namespace UserAPI.Infrastructure.Repository;
 
-public class UserRepository
+public class UserRepository : IUserRepository
 {
     private readonly UberEatContext _context;
 

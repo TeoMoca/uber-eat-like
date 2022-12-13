@@ -1,4 +1,6 @@
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using UserAPI.Application;
 using UserAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<UberEatContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddUseCase();
+builder.Services.AddInfrastructure();
+builder.Services.AddMediatR(typeof(UserAPI.Application.DependencyInjection).Assembly);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

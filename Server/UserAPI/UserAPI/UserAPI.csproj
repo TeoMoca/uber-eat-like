@@ -27,4 +27,10 @@
     <ProjectReference Include="..\UserAPI.Infrastructure\UserAPI.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="UserAPI.Application.UnitTests\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="UserAPI.Application.UnitTests\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="UserAPI.Application.UnitTests\obj\UserAPI.Application.UnitTests.csproj.nuget.dgspec.json" />
+  </ItemGroup>
+
 </Project>
