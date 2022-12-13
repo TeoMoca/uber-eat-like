@@ -8,7 +8,7 @@ public static class UserExtensions {
         var userViewModel = new List<UserViewModel>();
 
         foreach (var user in users){
-            userViewModel.Add(new UserViewModel(){Id = user.Id, Email = user.Email, Name = user.Name, Password = user.Password});
+            userViewModel.Add(new UserViewModel(){Id = user.Id, Email = user.Email, Name = user.Name, Password = user.Password, RoleId = user.RoleId});
         }
 
         return userViewModel;
@@ -18,7 +18,7 @@ public static class UserExtensions {
 
         var user = new Domain.User()
         {
-          Id  = userViewModel.Id, Email = userViewModel.Email, Name = userViewModel.Name, Password = userViewModel.Password
+          Id  = userViewModel.Id, Email = userViewModel.Email, Name = userViewModel.Name, Password = userViewModel.Password, RoleId = userViewModel.RoleId
         };
 
         return user;

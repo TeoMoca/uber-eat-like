@@ -6,7 +6,8 @@ namespace UserAPI.Infrastructure;
 public class UberEatContext: DbContext
 {
     public DbSet<User> Users { get; set; }
-    
+    public DbSet<Role> Roles { get; set; }
+
     public UberEatContext(DbContextOptions<UberEatContext> options) : base(options)
     {
 
@@ -18,4 +19,14 @@ public class UberEatContext: DbContext
         base.OnConfiguring(optionsBuilder);
     }
     
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>(builder => 
+            builder.HasOne(f => f.Role)
+                .WithMany(p => p.Users)
+                .HasForeignKey(f => f.RoleId)
+                .OnDelete(DeleteBehavior.Restrict));
+
+        base.OnModelCreating(modelBuilder);
+    }
 }
