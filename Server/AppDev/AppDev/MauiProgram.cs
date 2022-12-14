@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using AppDev.Data;
+using MudBlazor.Services;
 
 namespace AppDev;
 
@@ -13,6 +14,8 @@ public static class MauiProgram
             .ConfigureFonts(fonts => { fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular"); });
 
         builder.Services.AddMauiBlazorWebView();
+        builder.Services.AddMudServices();
+
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();
