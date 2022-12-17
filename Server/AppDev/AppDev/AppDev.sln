@@ -5,11 +5,11 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppDev", "AppDev.csproj", "{00B6C490-BD65-4C8C-BE0A-806DD68584BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDev.Applications", "..\AppDev.Applications\AppDev.Applications.csproj", "{213F826F-4505-488F-8159-5476AA72802B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppDev.Applications", "..\AppDev.Applications\AppDev.Applications.csproj", "{213F826F-4505-488F-8159-5476AA72802B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDev.Infrastructure", "..\AppDev.Infrastructure\AppDev.Infrastructure.csproj", "{1617A1B5-7D68-4DCC-9771-437F11F77FBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppDev.Infrastructure", "..\AppDev.Infrastructure\AppDev.Infrastructure.csproj", "{1617A1B5-7D68-4DCC-9771-437F11F77FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDev.Domain", "..\AppDev.Domain\AppDev.Domain.csproj", "{9CC21A3C-081A-4C01-9575-B2DAD74790F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppDev.Domain", "..\AppDev.Domain\AppDev.Domain.csproj", "{9CC21A3C-081A-4C01-9575-B2DAD74790F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +19,7 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{00B6C490-BD65-4C8C-BE0A-806DD68584BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{00B6C490-BD65-4C8C-BE0A-806DD68584BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B6C490-BD65-4C8C-BE0A-806DD68584BF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{00B6C490-BD65-4C8C-BE0A-806DD68584BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00B6C490-BD65-4C8C-BE0A-806DD68584BF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{213F826F-4505-488F-8159-5476AA72802B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

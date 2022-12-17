@@ -7,6 +7,7 @@ public class UberEatContext: DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
+    public DbSet<Gender> Genders { get; set; }
 
     public UberEatContext(DbContextOptions<UberEatContext> options) : base(options)
     {

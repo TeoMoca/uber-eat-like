@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserAPI.Infrastructure;
 
@@ -11,9 +12,11 @@ using UserAPI.Infrastructure;
 namespace UserAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(UberEatContext))]
-    partial class UberEatContextModelSnapshot : ModelSnapshot
+    [Migration("20221216113427_GenderCreate")]
+    partial class GenderCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,9 +33,6 @@ namespace UserAPI.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("GenderId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDisabled")
                         .HasColumnType("bit");
 
@@ -41,8 +41,6 @@ namespace UserAPI.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GenderId");
 
                     b.ToTable("Genders");
                 });
@@ -77,9 +75,6 @@ namespace UserAPI.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GenderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -88,50 +83,25 @@ namespace UserAPI.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RefreshToken")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GenderId");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("UserAPI.Domain.Gender", b =>
-                {
-                    b.HasOne("UserAPI.Domain.Gender", null)
-                        .WithMany("Genders")
-                        .HasForeignKey("GenderId");
-                });
-
             modelBuilder.Entity("UserAPI.Domain.User", b =>
                 {
-                    b.HasOne("UserAPI.Domain.Gender", "Gender")
-                        .WithMany()
-                        .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("UserAPI.Domain.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Gender");
-
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("UserAPI.Domain.Gender", b =>
-                {
-                    b.Navigation("Genders");
                 });
 
             modelBuilder.Entity("UserAPI.Domain.Role", b =>

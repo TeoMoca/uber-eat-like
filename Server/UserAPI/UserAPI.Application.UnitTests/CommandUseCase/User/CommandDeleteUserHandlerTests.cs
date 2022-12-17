@@ -10,16 +10,16 @@ public class CommandDeleteUserHandlerTests
     public async Task Should_Delete_User_When_Delete_It()
     {
         //Arrange
-        var user = new Domain.User();
+        var userId = Guid.NewGuid();
         var repository = new Mock<IUserRepository>();
-        repository.Setup(p => p.DeleteAsync(It.IsAny<Domain.User>())).Callback<Domain.User>(p => user = p);
-        var input = new InputDeleteUserUseCase(user);
+        repository.Setup(p => p.DeleteAsync(It.IsAny<Guid>())).Callback<Guid>(p => userId = p);
+        var input = new InputDeleteUserUseCase(userId);
         var usecase = new CommandDeleteUserHandler(repository.Object);
         
         //Act
         await usecase.Handle(input);
         
         //Assert
-        repository.Verify(p => p.DeleteAsync(It.IsAny<Domain.User>()), Times.Once);
+        repository.Verify(p => p.DeleteAsync(It.IsAny<Guid>()), Times.Once);
     }
 }

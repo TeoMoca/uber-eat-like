@@ -1,0 +1,41 @@
+﻿@page "/User"
+@using Microsoft.AspNetCore.Components
+@using AppDev.Pages.User.ViewModel
+
+<MudTable @ref="table" Elevation="0" Items="@elements" Height="80vh" Hover="true" Breakpoint="Breakpoint.Sm" Virtualize="true" FixedHeader="true" Filter="new Func<UserViewModel,bool>(SearchFilter)" T="UserViewModel"
+          CommitEditTooltip="Valider"
+          CanCancelEdit="true"
+          OnCancelEditClick="DeleteUser"
+          RowEditPreview="ItemPreviewChanged"
+          RowEditCommit="ItemHasBeenChanged"
+          RowEditCancel="ItemHasBeenChanged"
+          OnCommitEditClick="SaveUser">
+    <ToolBarContent>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" @onclick="@(() => AddRow())">Ajouter</MudButton>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchText" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Name</MudTh>
+        <MudTh>Email</MudTh>
+        <MudTh>Password</MudTh>
+        <MudTh>RoleId</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+        <MudTd DataLabel="Email">@context.Email</MudTd>
+        <MudTd DataLabel="Password">@context.Password</MudTd>
+        <MudTd DataLabel="RoleId">@context.RoleId</MudTd>
+    </RowTemplate>
+    <RowEditingTemplate Context="currentContext">
+        <MudTd DataLabel="Name">
+            <AppDevTextField @bind-Value="currentContext.Name" For="() => currentContext.Name" Class="InputControlLabelTextField" IsReadOnly="false"></AppDevTextField>
+        </MudTd>
+        <MudTd DataLabel="Email">
+            <AppDevTextField  @bind-Value="currentContext.Email" For="() => currentContext.Email" Class="InputControlLabelTextField" IsReadOnly="false"></AppDevTextField>        
+        </MudTd>
+        <MudTd DataLabel="Password">
+            <AppDevTextField @bind-Value="currentContext.Password" For="() => currentContext.Password" Class="InputControlLabelTextField" IsReadOnly="false"></AppDevTextField>
+        </MudTd>
+    </RowEditingTemplate>
+</MudTable>

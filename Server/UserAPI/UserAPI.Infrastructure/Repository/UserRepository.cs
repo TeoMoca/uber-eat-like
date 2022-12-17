@@ -25,9 +25,10 @@ public class UserRepository : IUserRepository
         return users;
     }
 
-    public async Task DeleteAsync(User user)
+    public async Task DeleteAsync(Guid userId)
     {
-         _context.Users.Remove(user);
+        var user = await _context.Users.Where(p => p.Id == userId).FirstOrDefaultAsync();
+        _context.Users.Remove(user);
          await _context.SaveChangesAsync();
     }
 

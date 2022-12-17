@@ -3,7 +3,7 @@ using UserAPI.Application.Interface;
 
 namespace UserAPI.Application.CommandUseCase.User;
 
-public record InputDeleteUserUseCase(Domain.User user) : IRequest<bool>;
+public record InputDeleteUserUseCase(Guid userId) : IRequest<bool>;
 
 public class CommandDeleteUserHandler : IRequestHandler<InputDeleteUserUseCase, bool>
 {
@@ -16,7 +16,7 @@ public class CommandDeleteUserHandler : IRequestHandler<InputDeleteUserUseCase, 
 
     public async Task<bool> Handle(InputDeleteUserUseCase request, CancellationToken cancellationToken = default)
     {
-        await _userRepository.DeleteAsync(request.user);
+        await _userRepository.DeleteAsync(request.userId);
 
         return true;
     }

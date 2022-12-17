@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using UserAPI.Application.CommandUseCase.Gender;
 using UserAPI.Application.CommandUseCase.Role;
 using UserAPI.Application.CommandUseCase.User;
 using UserAPI.Application.QueryUseCase.Role;
@@ -20,5 +21,6 @@ public static class DependencyInjection {
         services.AddScoped<CommandAddRoleHandler>();
         services.AddScoped<CommandDeleteRoleHandler>();
         services.AddScoped<CommandUpdateRoleHandler>();
+        services.AddScoped<CommandAddGenderHandler>();
     }    
 }

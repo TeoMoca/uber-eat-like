@@ -43,10 +43,10 @@ namespace UserAPI.Controllers;
             return isUpdated;
         }
 
-        [HttpDelete(Name = "DeleteUser")]
-        public async Task<bool> Delete(UserViewModel userViewModel)
+        [HttpDelete("{id}")]
+        public async Task<bool> Delete(Guid userId)
         {
-            var isDeleted = await _Mediator.Send(new InputDeleteUserUseCase(userViewModel.ToUseCase()));
+            var isDeleted = await _Mediator.Send(new InputDeleteUserUseCase(userId));
 
             return isDeleted;
         }

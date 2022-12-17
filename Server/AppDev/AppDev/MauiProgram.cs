@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using AppDev.Data;
 using MudBlazor.Services;
+using MediatR;
+using AppDev.Applications;
+using AppDev.Infrastructure;
 
 namespace AppDev;
 
@@ -15,7 +18,9 @@ public static class MauiProgram
 
         builder.Services.AddMauiBlazorWebView();
         builder.Services.AddMudServices();
-
+        builder.Services.AddUseCase();
+        builder.Services.AddInfrastructure();
+        builder.Services.AddMediatR(typeof(AppDev.Applications.DependencyInjection).Assembly);
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();

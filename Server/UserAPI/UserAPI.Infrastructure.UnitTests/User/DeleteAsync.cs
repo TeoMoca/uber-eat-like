@@ -38,5 +38,5 @@ public class DeleteAsync : InMemoryRepositoryTests
         await context.SaveChangesAsync();
     }
 
-    private async Task Act(Domain.User user) => await _repository.DeleteAsync(user);
+    private async Task Act(Domain.User user) => await _repository.DeleteAsync(user.Id);
 }

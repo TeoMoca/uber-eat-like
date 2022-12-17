@@ -1,0 +1,28 @@
+﻿<MudTextField label="@Label" @bind-Value="@Value" For="@For" Variant="Variant.Text" Margin="Margin.Dense" Disabled="IsReadOnly" Required="@IsRequired" Class="@Class"/>
+
+@code
+{
+    private string? value = null!;
+
+    [Parameter] public System.Linq.Expressions.Expression<Func<string>> For { get; set; }
+    [Parameter] public string? Label { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter]
+    public string? Value
+    {
+        get => value;
+        set
+        {
+            if (this.value == value) return;
+            this.value = value;
+            ValueChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+    [Parameter]
+    public bool IsReadOnly { get; set; }
+
+    [Parameter]
+    public bool IsRequired { get; set; }
+}
